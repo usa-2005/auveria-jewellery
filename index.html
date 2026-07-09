@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewellery Heaven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Titan+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="logo">✨ Aurévia Jewellery</div>
+    <ul class="nav-links">
+        <li><a href="#home" onclick="if(document.getElementById('cartPageSection').classList.contains('active')) toggleCart()">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#rings">Rings</a></li>
+        <li><a href="#bracelets">Bracelets</a></li>
+        <li><a href="#necklaces">Necklaces</a></li>
+        <li><a href="#bangles">Bangles</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#contact-location">Contact</a></li>
+        <li onclick="toggleCart()" class="cart-toggle">Cart 🛒 <span id="cartBadge" class="cart-badge"></span></li>
+    </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+    <video autoplay muted loop class="hero-video">
+        <source src="C:\Users\ummes\OneDrive\Desktop\Jewellery Website\jewellery-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay">
+        <h1>Aurévia Jewellery</h1>
+        <p>Where Elegance Meets Timeless Luxury</p>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="section about">
+    <h2>About Aurévia Jewellery</h2>
+    <p>Aurévia Jewellery is a luxury brand dedicated to creating timeless, elegant, and handcrafted jewellery pieces.</p>
+    <div class="about-boxes">
+        <div class="box"><h3>💎 Our Vision</h3><p>To redefine luxury jewellery with modern elegance.</p></div>
+        <div class="box"><h3>✨ Our Mission</h3><p>To provide premium quality jewellery that enhances life.</p></div>
+        <div class="box"><h3>🌟 Quality</h3><p>We use high-grade materials with perfect detailing.</p></div>
+    </div>
+</section>
+
+<!-- RINGS -->
+<section id="rings" class="section">
+    <h2>RINGS</h2>
+    <div class="grid">
+        <div class="card" onclick="openProduct('Diamond Ring','Elegant silver ring adorned with sparkling diamonds.','350','images/silver-diamond-ring.jpg')">
+            <img src="images/silver-diamond-ring.jpg" alt="Diamond Ring">
+            <h3>Diamond Ring</h3>
+            <p>AED 350</p>
+        </div>
+        <div class="card" onclick="openProduct('Gold Ring','Elegant pure gold ring with premium polish','400','images/gold-ring.jpg')">
+            <img src="images/gold-ring.jpg" alt="Gold Ring">
+            <h3>Gold Ring</h3>
+            <p>AED 400</p>
+        </div>
+        <div class="card" onclick="openProduct('Rose Gold Ring','Rose gold stylish modern ring','300','images/rose-gold-ring.jpg')">
+            <img src="images/rose-gold-ring.jpg" alt="Rose Gold Ring">
+            <h3>Rose Ring</h3>
+            <p>AED 300</p>
+        </div>
+        <div class="card" onclick="openProduct('Silver Ring','Classic silver ring with shine finish','250','images/silver-ring.jpg')">
+            <img src="images/silver-ring.jpg" alt="Silver Ring">
+            <h3>Silver Ring</h3>
+            <p>AED 250</p>
+        </div>
+    </div>
+</section>
+
+<!-- BRACELETS -->
+<section id="bracelets" class="section">
+    <h2>BRACELETS</h2>
+    <div class="grid">
+        <div class="card" onclick="openProduct('Gold Bracelet','Luxury gold bracelet for daily wear','500','images/gold-bracelet.jpg')">
+            <img src="images/gold-bracelet.jpg" alt="Gold Bracelet">
+            <h3>Gold Bracelet</h3>
+            <p>AED 500</p>
+        </div>
+        <div class="card" onclick="openProduct('Charm Bracelet','Elegant charm bracelet with stunning mix charms','450','images/charm-bracelet.jpg')">
+            <img src="images/charm-bracelet.jpg" alt="Charm Bracelet">
+            <h3>Charm Bracelet</h3>
+            <p>AED 450</p>
+        </div>
+        <div class="card" onclick="openProduct('Silver Bracelet','Minimal silver bracelet with flowers','300','images/silver-bracelet.jpg')">
+            <img src="images/silver-bracelet.jpg" alt="Silver Bracelet">
+            <h3>Silver Bracelet</h3>
+            <p>AED 300</p>
+        </div>
+        <div class="card" onclick="openProduct('Rose Gold Bracelet','Rose gold clover bracelet for daily wear','520','images/rose-gold-bracelet.jpg')">
+            <img src="images/rose-gold-bracelet.jpg" alt="Rose Gold Bracelet">
+            <h3>Rose Bracelet</h3>
+            <p>AED 520</p>
+        </div>
+    </div>
+</section>
+
+<!-- NECKLACES -->
+<section id="necklaces" class="section">
+    <h2>NECKLACES</h2>
+    <div class="grid">
+        <div class="card" onclick="openProduct('Diamond Necklace','Luxury diamond necklace set','900','images/diamond-necklace.jpg')">
+            <img src="images/diamond-necklace.jpg" alt="Diamond Necklace">
+            <h3>Diamond Necklace</h3>
+            <p>AED 900</p>
+        </div>
+        <div class="card" onclick="openProduct('Gold Necklace','Pure gold premium swan necklace','850','images/gold-necklace.jpg')">
+            <img src="images/gold-necklace.jpg" alt="Gold Necklace">
+            <h3>Gold Necklace</h3>
+            <p>AED 850</p>
+        </div>
+        <div class="card" onclick="openProduct('Pearl Necklace','Elegant pearl bridal necklace','700','images/pearl-necklace.jpg')">
+            <img src="images/pearl-necklace.jpg" alt="Pearl Necklace">
+            <h3>Pearl Necklace</h3>
+            <p>AED 700</p>
+        </div>
+        <div class="card" onclick="openProduct('Stone Necklace','Modern opal gemstone necklace design necklace','650','images/stone-necklace.jpg')">
+            <img src="images/stone-necklace.jpg" alt="Stone Necklace">
+            <h3>Stone Necklace</h3>
+            <p>AED 650</p>
+        </div>
+    </div>
+</section>
+
+<!-- BANGLES -->
+<section id="bangles" class="section">
+    <h2>BANGLES</h2>
+    <div class="grid">
+        <div class="card" onclick="openProduct('Gold Bangles','Traditional gold bangles set','800','images/gold-bangle.jpg')">
+            <img src="images/gold-bangle.jpg" alt="Gold Bangles">
+            <h3>Gold Bangles</h3>
+            <p>AED 800</p>
+        </div>
+        <div class="card" onclick="openProduct('Diamond Bangles','Premium diamond bangles','950','images/diamond-bangles.jpg')">
+            <img src="images/diamond-bangles.jpg" alt="Diamond Bangles">
+            <h3>Diamond Bangles</h3>
+            <p>AED 950</p>
+        </div>
+        <div class="card" onclick="openProduct('Silver Bangles','Elegant silver bangles','400','images/silver-bangles.jpg')">
+            <img src="images/silver-bangles.jpg" alt="Silver Bangles">
+            <h3>Silver Bangles</h3>
+            <p>AED 400</p>
+        </div>
+        <div class="card" onclick="openProduct('Rose Bangles','Rose gold fashion bangles','600','images/rose-gold-bangles.jpg')">
+            <img src="images/rose-gold-bangles.jpg" alt="Rose Gold Bangles">
+            <h3>Rose Bangles</h3>
+            <p>AED 600</p>
+        </div>
+    </div>
+</section>
+
+<!-- DEDICATED FULL CART PAGE CONTAINER -->
+<div id="cartPageSection" class="cart-page-content">
+    <div class="cart-container">
+        <div class="cart-header">
+            <h2>YOUR BAG <span id="cartCountHeader">(0 ITEMS)</span></h2>
+            <span class="close-cart" onclick="toggleCart()">← Continue Shopping</span>
+        </div>
+        
+        <div id="cartItems"></div>
+        
+        <div class="cart-summary-layout">
+            <p id="total">Total: AED 0</p>
+            <div class="cart-buttons-group">
+                <button onclick="goToPayment()" class="checkout-btn">CHECKOUT —></button>
+                <button onclick="clearCart()" class="clear-cart-btn">CLEAR CART</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCT POPUP MODAL -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">×</span>
+        <img id="pimg" src="" class="popup-img">
+        <h2 id="pname"></h2>
+        <p id="pdesc"></p>
+        <h3 id="pprice"></h3>
+        <button onclick="addToCartFromPopup()">Add to Cart</button>
+    </div>
+</div>
+
+<!-- FEEDBACK -->
+<section id="feedback" class="section">
+    <h2>Customer Feedback</h2>
+    <div class="feedback-box">
+        <input type="text" placeholder="Your Name">
+        <textarea placeholder="Your Feedback"></textarea>
+        <select>
+            <option> ★ ★ ★ ★ ★</option>
+            <option> ★ ★ ★ ★</option>
+            <option> ★ ★ ★</option>
+            <option> ★ ★</option>
+            <option> ★</option>
+        </select>
+        <button onclick="submitFeedback()">Submit</button>
+    </div>
+    <div id="feedbackList"></div>
+</section>
+
+<!-- CONTACT & LOCATION INFO -->
+<section id="contact-location" class="section contact-location-sec">
+    <h2>Visit Our Boutique</h2>
+    <p>Experience our master craftsmanship in person</p>
+    
+    <div class="contact-grid">
+        <!-- Interactive Live Google Maps Embed Container -->
+        <div class="map-box">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14427.971510344405!2d55.48518885!3d25.471923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f7b036d07d1a5%3A0xe54e1797c2e0b571!2sAjman!5e0!3m2!1sen!2sae!4v1710000000000!5m2!1sen!2sae" 
+                width="100%" 
+                height="350" 
+                style="border:0; border-radius: 8px;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Store Address Details Card Stack -->
+        <div class="info-box">
+            <div class="info-card">
+                <h3>📍 Showroom Address</h3>
+                <p>Aurévia Luxury Tower, Elite Retail District, Ajman, United Arab Emirates</p>
+            </div>
+            <div class="info-card">
+                <h3>📞 Contact Number</h3>
+                <p>+971 56 230 2785</p>
+            </div>
+            <div class="info-card">
+                <h3>✉️ Email Support</h3>
+                <p>concierge@aureviajewellery.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

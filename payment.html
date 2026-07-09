@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurévia Jewellery - Secure Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Titan+One&display=swap" rel="stylesheet">
+    <!-- Links to your external styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="payment-container">
+    <h2>Secure Checkout</h2>
+
+    <!-- Live Dynamic Total Price -->
+    <div class="order-total-box">
+        <span>Amount Payable:</span>
+        <h3 id="displayTotal"></h3>
+    </div>
+
+    <!-- Step 1: Customer Details Form -->
+    <form id="checkoutForm" onsubmit="handleProceed(event)">
+        <div id="detailsSection">
+            <div class="section-title">1. Customer Details</div>
+            <input type="text" id="custName" placeholder="Full Name" required>
+            <input type="email" id="custEmail" placeholder="Email Address" required>
+            <input type="tel" id="custContact" placeholder="Contact Number" required>
+            <textarea id="custAddress" placeholder="Complete Delivery Address" rows="3" required></textarea>
+            
+            <button type="submit" class="action-btn">Proceed to Payment</button>
+        </div>
+
+        <!-- Step 2: Payment Section (Hidden until Proceed is clicked) -->
+        <div id="paymentSection" style="display: none;">
+            <div class="section-title">2. Select Payment Method</div>
+            <div class="methods-group">
+                <div class="method-btn" id="btn-credit" onclick="selectMethod('credit')">Credit Card</div>
+                <div class="method-btn" id="btn-debit" onclick="selectMethod('debit')">Debit Card</div>
+                <div class="method-btn" id="btn-cod" onclick="selectMethod('cod')">Cash On Delivery</div>
+            </div>
+
+            <!-- Conditional Input Fields Based on Selection -->
+            <div id="paymentFieldsWrapper" class="dynamic-fields" style="display: none;">
+                <div id="cardFields" style="display: none;">
+                    <input type="text" id="cardNumber" placeholder="Card Number (16-digits)" maxlength="16">
+                    <input type="text" id="cardHolder" placeholder="Cardholder Name">
+                    <div class="card-row">
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                        <input type="password" id="cardCvv" placeholder="CVV" maxlength="3">
+                    </div>
+                </div>
+                <div id="codFields" style="display: none;">
+                    <p style="margin: 0; color: #4a5568; font-size: 14px;">ℹ️ Please pay the exact amount to our delivery agent in cash upon receiving your luxury box.</p>
+                </div>
+            </div>
+
+            <button type="button" onclick="submitFinalPayment()" class="action-btn">Complete Order</button>
+        </div>
+    </form>
+
+    <span class="back-link" onclick="window.location.href='index.html'">← Back to Store</span>
+</div>
+
+<!-- Links to your external payment logic script -->
+<script src="script.js"></script>
+</body>
+</html>

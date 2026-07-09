@@ -1,6 +1,41 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let selectedProduct = {};
 
+// --- NEW NAVIGATION ELEMENTS ---
+// These grab the mobile menu elements we created in your HTML
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinksList = document.getElementById('nav-links-list');
+
+// Open or close the main mobile menu dropdown when clicking the hamburger lines
+if (mobileMenu) {
+    mobileMenu.addEventListener('click', () => {
+        navLinksList.classList.toggle('active');
+    });
+}
+
+// Handles clicking the 'Shop' item on mobile devices
+function toggleDropdown(event) {
+    if (window.innerWidth <= 768) {
+        event.preventDefault(); // Stop the screen from jumping up to '#'
+        const dropdownMenu = document.getElementById('shop-dropdown');
+        if (dropdownMenu) {
+            dropdownMenu.classList.toggle('show');
+        }
+    }
+}
+
+// Clean helper function to hide all menus after an item is selected
+function closeMenu() {
+    if (navLinksList && navLinksList.classList.contains('active')) {
+        navLinksList.classList.remove('active');
+    }
+    const dropdownMenu = document.getElementById('shop-dropdown');
+    if (dropdownMenu && dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
+    }
+}
+// --------------------------------
+
 // When the page loads, make sure the navbar badge reflects saved items
 document.addEventListener("DOMContentLoaded", () => {
     updateCart();
@@ -87,12 +122,14 @@ function updateCart(){
 
     // Update Navbar Badge
     const badge = document.getElementById("cartBadge");
-    if (itemCount > 0) {
-        badge.innerText = `(${itemCount})`; // Clean style: just displays (1), (2), etc.
-        badge.style.display = "inline";
-    } else {
-        badge.innerText = "";
-        badge.style.display = "none";
+    if (badge) {
+        if (itemCount > 0) {
+            badge.innerText = `(${itemCount})`; // Clean style: just displays (1), (2), etc.
+            badge.style.display = "inline";
+        } else {
+            badge.innerText = "";
+            badge.style.display = "none";
+        }
     }
 }
 
@@ -198,10 +235,10 @@ function setCardFieldsRequired(isRequired) {
 
 // Step 3: Conclude active transactions, send to Excel, and wipe checkout arrays cleanly 
 function submitFinalPayment() {
-    // 1. Your verified Google Apps Script Web App URL
+    // Your verified Google Apps Script Web App URL
     const EXCEL_BRIDGE_URL = "https://script.google.com/macros/s/AKfycbx5P5yaYsvzUCKGFFEGgnMnPGaYspFudDAeav0Kx64ltulTd3HQ_ykwLhQzEr-lkouD/exec";
 
-    // 2. Validate card fields if card method is selected
+    // Validate card fields if card method is selected
     if (chosenMethod === 'credit' || chosenMethod === 'debit') {
         const num = document.getElementById("cardNumber").value;
         const holder = document.getElementById("cardHolder").value;
@@ -214,7 +251,7 @@ function submitFinalPayment() {
         }
     }
 
-    // 3. Gather Customer and Product info for Excel
+    // Gather Customer and Product info for Excel
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     const productNamesList = cartData.map(item => item.name).join(", ");
     
@@ -225,7 +262,7 @@ function submitFinalPayment() {
         products: productNamesList
     };
 
-    // 4. Send data to your Excel sheet first, THEN show alert and redirect
+    // Send data to your Excel sheet first, THEN show alert and redirect
     fetch(EXCEL_BRIDGE_URL, {
         method: "POST",
         mode: "no-cors", 

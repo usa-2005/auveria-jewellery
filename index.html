@@ -12,16 +12,31 @@
 <!-- NAV -->
 <nav class="navbar">
     <div class="logo">✨ Aurévia Jewellery</div>
-    <ul class="nav-links">
-        <li><a href="#home" onclick="if(document.getElementById('cartPageSection').classList.contains('active')) toggleCart()">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#rings">Rings</a></li>
-        <li><a href="#bracelets">Bracelets</a></li>
-        <li><a href="#necklaces">Necklaces</a></li>
-        <li><a href="#bangles">Bangles</a></li>
-        <li><a href="#feedback">Feedback</a></li>
-        <li><a href="#contact-location">Contact</a></li>
-        <li onclick="toggleCart()" class="cart-toggle">Cart 🛒 <span id="cartBadge" class="cart-badge"></span></li>
+    
+    <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links-list">
+        <li><a href="#home" onclick="if(document.getElementById('cartPageSection').classList.contains('active')) toggleCart(); closeMenu();">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        
+        <!-- NEW: Shop Dropdown Menu -->
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Shop ▾</a>
+            <ul class="dropdown-menu" id="shop-dropdown">
+                <li><a href="#rings" onclick="closeMenu()">Rings</a></li>
+                <li><a href="#bracelets" onclick="closeMenu()">Bracelets</a></li>
+                <li><a href="#necklaces" onclick="closeMenu()">Necklaces</a></li>
+                <li><a href="#bangles" onclick="closeMenu()">Bangles</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#feedback" onclick="closeMenu()">Feedback</a></li>
+        <li><a href="#contact-location" onclick="closeMenu()">Contact</a></li>
+        <li onclick="toggleCart(); closeMenu();" class="cart-toggle">Cart 🛒 <span id="cartBadge" class="cart-badge"></span></li>
     </ul>
 </nav>
 

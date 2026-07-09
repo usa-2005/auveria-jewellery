@@ -16,6 +16,8 @@ h3 {
   font-weight: normal;
 }
 
+/* --- DESKTOP STYLES (Your Original Rules with Dropdown Layouts) --- */
+
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0; 
@@ -34,16 +36,139 @@ h3 {
   font-family: 'Titan One', sans-serif;
 }
 
-nav ul {
+/* Updated: Changed 'nav ul' to targeting '.nav-links' specifically */
+.nav-links {
   display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; align-items: center;
 }
 
-nav ul li a, .cart-toggle {
+.nav-links li a, .cart-toggle {
   color: #a4b2c7; text-decoration: none; cursor: pointer; font-family: 'Roboto Condensed', sans-serif;
   font-size: 16px; text-transform: uppercase; font-weight: 600; transition: color 0.3s ease;
 }
 
-nav ul li a:hover, .cart-toggle:hover { color: #dfba73; }
+.nav-links li a:hover, .cart-toggle:hover { 
+  color: #dfba73; 
+}
+
+/* --- NEW: DESKTOP SHOP DROPDOWN LAYOUT --- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1a273a; /* Slightly lighter tone than your primary background */
+  list-style: none;
+  padding: 10px 0;
+  min-width: 160px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  z-index: 1001;
+  margin-top: 5px;
+}
+
+.dropdown-menu li {
+  width: 100%;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #24354f; /* Subtle selection bar color on hover */
+}
+
+/* Open sub-menu smoothly when hovering over 'Shop' on desktops */
+@media screen and (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+/* --- NEW: MOBILE HAMBURGER ICON BUTTON --- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  gap: 5px;
+  padding: 5px;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #dfba73; /* Matches your gold brand theme color */
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* --- NEW: MOBILE RESPONSIVE MEDIA QUERY --- */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: flex; /* Reveals the beautiful gold burger icon lines */
+  }
+
+  .nav-links {
+    display: none; /* Collapses normal row display layout */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #131d2b; /* Matches your core brand background */
+    padding: 20px 0;
+    text-align: center;
+    gap: 0; /* Let list padding handle item spatial spread */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex; /* Triggers the dropdown open state on click */
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a, .cart-toggle {
+    display: block;
+    padding: 12px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* --- MOBILE SHOP DROPDOWN LAYOUT TWEAKS --- */
+  .dropdown-menu {
+    position: static; /* Fluid flow down inside the mobile menu stack */
+    transform: none;
+    box-shadow: none;
+    background-color: #1a273a; /* Dark nesting effect background block */
+    padding: 0;
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+
+  .dropdown-menu li a {
+    text-align: center; /* Center-align link items for thumb-tapping comfort */
+    padding: 12px 0;
+  }
+}
 
 .cart-badge { color: #dfba73; font-weight: bold; margin-left: 5px; }
 
